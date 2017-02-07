@@ -3,6 +3,7 @@ package com.example.wangqiang.fastcollection;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
  * Java的集合类
@@ -34,6 +35,31 @@ import java.util.Iterator;
  * Object[] toArray();
  * 遍历
  * terator<E> iterator();
+ *
+ * Set:
+ * 不允许包含相同的元素
+ *             |--HashSet
+ *             | (按照hash算法存储，具有很好的存取和查抄性能)
+ *             |--TreeSet
+ *             | (有序集合，元素可重复)
+ *             |--EnumSet
+ *             | (队列)
+ * ------HashSet
+ *  特点：
+ *  1 可以为null
+ *  2 线程不安全
+ *  3 不保证排列顺序
+ *  原理：
+ *  当放入一个元素的时候
+ *  它会调用该对象的hashCode()方法拿到hashcode值，决定存储位置
+ *  equals()方法比较 返回值 决定值相等
+ *
+ * ------LinkedHashSet：
+ *  LinkedHashSet 按照哈希算法来存储集合中的元素，
+ *  使用链表维护元素次序
+ *  性动能略低于HashSet,但是迭代全部元素的时候有很好的性能。
+ *  ------TreeSet：
+ *  TreeSet是 SortedSet接口的实现类，确保处于排序状态。
  */
 
 public class CollectionKnowledge {
@@ -58,5 +84,16 @@ public class CollectionKnowledge {
                 books.remove(bookName);
             }
         }
+    }
+
+    /**
+     * 增加了访问第一个，前一个，后一个，最后一个，并且3个截取子TreeSet的方法。
+     */
+    public void testTreeSet(){
+        TreeSet nums = new TreeSet();
+        nums.add(5 );
+        nums.add(2 );
+        nums.add(10 );
+        nums.add(-9 );
     }
 }
